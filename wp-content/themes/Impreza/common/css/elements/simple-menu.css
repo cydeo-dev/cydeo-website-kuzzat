@@ -1,0 +1,176 @@
+/*
+ * Simple Menu
+ */
+
+.w-menu .menu {
+	margin: 0;
+	}
+	.w-menu ul,
+	.w-menu li {
+		list-style: none;
+		margin: 0;
+		}
+	.w-menu li:last-child {
+		margin: 0 !important;
+		}
+	.w-menu .sub-menu {
+		padding-top: var(--sub-gap, 0);
+		margin-inline-start: 1.2em;
+		}
+		.w-menu .sub-menu li {
+			margin-bottom: var(--sub-gap, 0);
+			}
+	.w-menu .sub-menu .current-menu-item > a {
+		color: inherit;
+		}
+
+/* Colors */
+.w-menu.style_blocks[style*=--main-bg-color] .menu > li > a {
+	background: var(--main-bg-color);
+	}
+.w-menu[style*=--main-color] .menu > li > a {
+	color: var(--main-color);
+	}
+.w-menu.style_blocks[style*=--main-active-bg-color] .menu > li.expanded > a,
+.w-menu.style_blocks[style*=--main-active-bg-color] .menu > li.is-active > a,
+.w-menu.style_blocks[style*=--main-active-bg-color] .menu > li.current-menu-item > a {
+	background: var(--main-active-bg-color);
+	}
+.w-menu[style*=--main-active-color] .menu > li.expanded > a,
+.w-menu[style*=--main-active-color] .menu > li.is-active > a,
+.w-menu[style*=--main-active-color] .menu > li.current-menu-item > a {
+	color: var(--main-active-color);
+	}
+.no-touch .w-menu.style_blocks[style*=--main-hover-bg-color] .menu > li:not(.current-menu-item) > a:hover {
+	background: var(--main-hover-bg-color);
+	}
+.no-touch .w-menu[style*=--main-hover-color] .menu > li:not(.current-menu-item) > a:hover {
+	color: var(--main-hover-color);
+	}
+
+/* LAYOUT: vertical */
+.w-menu.layout_ver {
+	line-height: 1.4;
+	}
+	.w-menu.layout_ver .menu > li {
+		margin-bottom: var(--main-gap, 0);
+		}
+
+/* LAYOUT: horizontal */
+.w-menu.layout_hor .menu {
+	display: inline-flex;
+	flex-wrap: wrap;
+	}
+	.w-menu.layout_hor .menu > li:not(:last-of-type) {
+		margin-inline-end: var(--main-gap, 0);
+		}
+.w-menu.layout_hor.not_responsive .menu {
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	overflow-x: auto;
+	max-width: 100%;
+	-webkit-overflow-scrolling: touch;
+	}
+	.w-menu.layout_hor.with_children .menu > .menu-item-has-children > a {
+		font-weight: bold;
+		}
+	.w-menu.layout_hor .menu > li > .sub-menu {
+		margin: 1em 0 0;
+		}
+
+/* SPREAD */
+.w-menu.layout_hor.spread {
+	width: 100%;
+	margin: 0;
+	}
+	.w-menu.layout_hor.spread .menu {
+		justify-content: space-between;
+		width: 100%;
+		}
+		.w-menu.layout_hor.spread.with_children .menu > .menu-item-has-children {
+			flex: 1 1 100px;
+			}
+
+/* STYLE: Blocks */
+.w-menu.style_blocks .menu > li > a {
+	display: block;
+	padding: var(--main-ver-indent, 0) var(--main-hor-indent, 0);
+	text-decoration: none !important;
+	}
+.w-menu.style_blocks .sub-menu {
+	margin-inline-start: 0;
+	padding: var(--main-ver-indent, 0) var(--main-hor-indent, 0);
+	}
+
+/* Fallback for menu in header */
+.header_hor .l-header .w-menu {
+	line-height: 2;
+	}
+.header_ver .l-header .w-menu {
+	line-height: 1;
+	}
+.header_ver .l-header .w-menu .menu {
+	display: block;
+	}
+
+/* Accordion Type */
+.w-menu.type_accordion {
+	width: 100%;
+	}
+	.w-menu.type_accordion .sub-menu {
+		display: none;
+		visibility: hidden; /* required to disable tab navigation without JS */
+		}
+	.w-menu.type_accordion .current_page_ancestor > .sub-menu,
+	.w-menu.type_accordion .menu-item-has-children.expanded > .sub-menu {
+		display: block;
+		visibility: visible;
+		}
+	.w-menu.type_accordion .menu-item-has-children > a {
+		display: flex !important;
+		align-items: center;
+		}
+		.w-menu.type_accordion b {
+			display: none;
+			font-weight: inherit;
+			width: 1em;
+			transition: transform .3s;
+			}
+		.w-menu.type_accordion .menu-item-has-children > a > b {
+			display: block;
+			}
+			.w-menu.type_accordion b::before {
+				display: inline-block;
+				vertical-align: top;
+				font-family: fontawesome;
+				transition: transform .3s;
+				}
+			.w-menu.type_accordion .menu-item-has-children.expanded > a > b::before {
+				transform: rotate(180deg);
+				}
+			.w-menu.type_accordion.icontype_chevron b::before {
+				content: '\f107';
+				font-weight: 400;
+				}
+			.w-menu.type_accordion.icontype_plus b::before {
+				content: '\f067';
+				font-weight: 400;
+				}
+			.w-menu.type_accordion.icontype_triangle b::before {
+				content: '\f0d7';
+				font-weight: 700;
+				}
+		.w-menu.type_accordion.iconpos_before b {
+			margin-inline-end: -1em;
+			}
+		.w-menu.type_accordion.iconpos_before .menu-item > a > span {
+			margin-inline-start: 1.2em;
+			}
+		.w-menu.type_accordion.iconpos_after b {
+			text-align: end;
+			margin-inline-start: auto;
+			}
+		.w-menu.type_accordion.iconpos_after .menu-item-has-children > a > span {
+			order: -1;
+			margin-inline-end: 1.2em;
+			}

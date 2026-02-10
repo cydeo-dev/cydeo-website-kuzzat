@@ -1,0 +1,125 @@
+
+.w-countdown {
+	font-size: 3rem;
+	text-align: center;
+	}
+	.w-countdown-item {
+		display: inline-flex;
+		vertical-align: top;
+		flex-direction: column;
+		line-height: 1;
+		margin-inline-start: 1rem;
+		}
+	.w-countdown-item:has(.w-countdown-item-label:empty) + .w-countdown-item,
+	.w-countdown-item:first-child {
+		margin-inline-start: 0;
+		}
+	.w-countdown-item:has(.w-countdown-item-label:empty) {
+		display: none !important;
+		}
+		.w-countdown-item-number {
+			position: relative;
+			overflow: hidden;
+			height: 1em;
+			}
+			.w-countdown-item-number:before {
+				content: '44'; /* most wide digits to exclude width shrink */
+				display: block;
+				margin-top: -1em;
+				}
+			.w-countdown-item-number > span {
+				display: block;
+				}
+		.w-countdown-message,
+		.w-countdown-item-label {
+			font-size: var(--label-size, inherit);
+			font-weight: var(--label-weight, inherit);
+			color: var(--label-color, inherit);
+			line-height: 1.2;
+			}
+	.w-countdown.expired.after_end_hide,
+	.w-countdown.expired > .w-countdown-item,
+	.w-countdown:not(.expired) > .w-countdown-message {
+		display: none;
+		}
+
+/* Label Position: Aside */
+.w-countdown.labelpos_aside:not(.expired) .w-countdown-item,
+.w-countdown.labelpos_aside .w-countdown-item-number {
+	display: inline-block;
+	vertical-align: top;
+	white-space: nowrap;
+	}
+.w-countdown.labelpos_aside .w-countdown-item-label {
+	display: inline-block;
+	line-height: inherit;
+	margin-inline-start: .25em;
+	}
+.w-countdown.labelpos_aside [data-type=days] > .w-countdown-item-number:before,
+.w-countdown.labelpos_aside [data-type=hours] > .w-countdown-item-number:before,
+.w-countdown.labelpos_aside [data-type=minutes] > .w-countdown-item-number:before {
+	display: none;
+	}
+
+/* Animations */
+.w-countdown.animation_slide .w-countdown-item-number > span.new {
+	margin-top: -1em;
+	}
+.w-countdown.animation_slide .w-countdown-item-number > span.new.is-updating {
+	animation: us-countdown-new-slide .5s;
+	}
+.w-countdown.animation_slide .w-countdown-item-number > span.old.is-updating {
+	animation: us-countdown-old-slide .5s;
+	}
+@keyframes us-countdown-new-slide {
+	from { transform: translateY(-100%) }
+	to   { transform: translateY(0) }
+	}
+@keyframes us-countdown-old-slide {
+	from { transform: translateY(0) }
+	to   { transform: translateY(100%) }
+	}
+
+.w-countdown.animation_zoom .w-countdown-item-number > span.is-updating {
+	animation: us-countdown-zoom .4s ease-out;
+	}
+@keyframes us-countdown-zoom {
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(.5);
+	}
+}
+
+.w-countdown.animation_flip .w-countdown-item-number {
+	perspective: 1.5em;
+	}
+.w-countdown.animation_flip .w-countdown-item-number > span.is-updating {
+	animation: us-countdown-flip .4s ease-in-out;
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+	}
+@keyframes us-countdown-flip {
+	0% {
+		transform: rotateX(0deg);
+	}
+	100% {
+		transform: rotateX(90deg);
+	}
+}
+.w-countdown.animation_flip .w-countdown-item-number > span:not(.is-updating) {
+	animation: us-countdown-flipIn .6s ease-in-out;
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+	}
+@keyframes us-countdown-flipIn {
+	from {
+		transform: rotateX(-90deg);
+	}
+	to {
+		transform: rotateX(0deg);
+	}
+}

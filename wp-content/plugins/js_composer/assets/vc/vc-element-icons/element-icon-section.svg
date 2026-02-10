@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>section</title>
+    <g id="component:-featured-image" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="section" transform="translate(1, 1)" stroke-width="1.7">
+            <rect id="Rectangle" stroke="#00447F" fill="#00447F" x="0" y="0" width="32" height="32" rx="3"></rect>
+            <path d="M17,5 L6,5 C5.44772,5 5,5.4477 5,6 L5,26 C5,26.5522 5.44772,27 6,27 L26,27 C26.5523,27 27,26.5522 27,26 L27,6 C27,5.4477 26.5523,5 26,5 L23,5" id="Path" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>
